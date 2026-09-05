@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Newone Chat</title>
+<script>
+  // GitHub Pages cannot rewrite app routes such as /app/conversation/<id> to the
+  // app shell. Remember the requested path for this tab and open the app root;
+  // the app restores the route once the session is ready. Every other 404 shows
+  // the plain message below.
+  (function () {
+    var match = /^((?:\/[^\/]+)*?\/app)(\/.*)$/.exec(location.pathname);
+    if (!match || match[2] === '/') return;
+    try {
+      sessionStorage.setItem('newone.web.deeplink', location.pathname + location.search + location.hash);
+    } catch (error) {
+      // Storage blocked: the app still opens at its root.
+    }
+    location.replace(match[1] + '/');
+  })();
+</script>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:0;color:#14211d;background:#fafaf7;display:grid;min-height:100vh;place-items:center;padding:24px}
+  main{text-align:center}h1{font-size:1.6rem;margin:0 0 8px}a{color:#0f7a5a}
+</style>
+</head>
+<body>
+<main><h1>Page not found</h1><p><a href="/newone-legal/">Back to Newone Chat</a></p></main>
+</body>
+</html>
